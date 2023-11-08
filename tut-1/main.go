@@ -13,20 +13,7 @@ func main() {
 		const totalTickets int = 50
 		var remainingTickets uint = 50
 		fmt.Printf("We have only %v tickets left.\nPlease Register to Confirm your booking", remainingTickets)
-
-		var firstName string
-		var lastName string
-		var email string
-		var requestedTickets uint
-
-		fmt.Printf("Enter your First Name ")
-		fmt.Scan(&firstName)
-		fmt.Printf("Enter your Last Name ")
-		fmt.Scan(&lastName)
-		fmt.Printf("Enter your email ")
-		fmt.Scan(&email)
-		fmt.Printf("Enter how mant tickets your want ")
-		fmt.Scan(&requestedTickets)
+		firstName, lastName, email, requestedTickets := getInput()
 		isValidEmail := strings.Contains(email, "@")
 
 		isValidNumber := requestedTickets > remainingTickets
@@ -49,12 +36,7 @@ func main() {
 
 			var allTheAttendes []string
 			allTheAttendes = append(allTheAttendes, firstName+" "+lastName)
-			firstNames := []string{}
-
-			for _, attendee := range allTheAttendes {
-				var name = strings.Fields(attendee)
-				firstNames = append(firstNames, name[0])
-			}
+			firstNames := getFirstName(allTheAttendes)
 
 			fmt.Printf("The List of all the attendees is %v.\n", firstNames)
 			fmt.Printf("Number people who booked the tickets is%v.\n", len(firstNames))
@@ -65,7 +47,32 @@ func main() {
 		} else {
 			fmt.Printf("Number of remaining Tickets is %v\n", remainingTickets)
 		}
-
 	}
+}
 
+func getFirstName(allTheAttendes []string) []string {
+	firstNames := []string{}
+
+	for _, attendee := range allTheAttendes {
+		var name = strings.Fields(attendee)
+		firstNames = append(firstNames, name[0])
+	}
+	return firstNames
+}
+
+func getInput() (string, string, string, uint) {
+	var firstName string
+	var lastName string
+	var email string
+	var requestedTickets uint
+
+	fmt.Printf("Enter your First Name ")
+	fmt.Scan(&firstName)
+	fmt.Printf("Enter your Last Name ")
+	fmt.Scan(&lastName)
+	fmt.Printf("Enter your email ")
+	fmt.Scan(&email)
+	fmt.Printf("Enter how mant tickets your want ")
+	fmt.Scan(&requestedTickets)
+	return firstName, lastName, email, requestedTickets
 }
