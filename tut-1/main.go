@@ -27,24 +27,44 @@ func main() {
 		fmt.Scan(&email)
 		fmt.Printf("Enter how mant tickets your want ")
 		fmt.Scan(&requestedTickets)
+		isValidEmail := strings.Contains(email, "@")
 
-		remainingTickets = remainingTickets - requestedTickets
+		isValidNumber := requestedTickets > remainingTickets
 
-		fmt.Printf("Thank you %v %v for booking % v Tickets./n", firstName, lastName, remainingTickets)
-		fmt.Printf("You will recevie a confirmation mail on %v \n", email)
-		fmt.Printf("Number of remaining Tickets is %v\n", remainingTickets)
+		//validation for ticket sales
+		if isValidEmail && isValidNumber {
+			if isValidEmail {
+				fmt.Println("Invalid Email")
+			}
+			if isValidNumber {
+				fmt.Printf("%v tickets not available\n", requestedTickets)
+			}
+			continue
+		} else {
 
-		var allTheAttendes []string
-		allTheAttendes = append(allTheAttendes, firstName+" "+lastName)
-		firstNames := []string{}
+			remainingTickets = remainingTickets - requestedTickets
 
-		for _, attendee := range allTheAttendes {
-			var name = strings.Fields(attendee)
-			firstNames = append(firstNames, name[0])
+			fmt.Printf("Thank you %v %v for booking % v Tickets./n", firstName, lastName, remainingTickets)
+			fmt.Printf("You will recevie a confirmation mail on %v \n", email)
+
+			var allTheAttendes []string
+			allTheAttendes = append(allTheAttendes, firstName+" "+lastName)
+			firstNames := []string{}
+
+			for _, attendee := range allTheAttendes {
+				var name = strings.Fields(attendee)
+				firstNames = append(firstNames, name[0])
+			}
+
+			fmt.Printf("The List of all the attendees is %v.\n", firstNames)
+			fmt.Printf("Number people who booked the tickets is%v.\n", len(firstNames))
 		}
-
-		fmt.Printf("The List of all the attendees is %v.\n", firstNames)
-		fmt.Printf("Number people who booked the tickets is%v.\n", len(firstNames))
+		if remainingTickets == 0 {
+			fmt.Println("We are sold out")
+			break
+		} else {
+			fmt.Printf("Number of remaining Tickets is %v\n", remainingTickets)
+		}
 
 	}
 
