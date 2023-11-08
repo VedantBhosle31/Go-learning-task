@@ -1,9 +1,9 @@
 package main
 
 import (
+	"booking-cli-in-go/booking-cli-in-go/helper"
 	"fmt"
 	"strings"
-	"ticket-booking/helper"
 )
 
 type UserData helper.UserData
