@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strings"
+	"tut-1/helper"
 )
 
 func main() {
@@ -13,7 +14,7 @@ func main() {
 		const totalTickets int = 50
 		var remainingTickets uint = 50
 		fmt.Printf("We have only %v tickets left.\nPlease Register to Confirm your booking", remainingTickets)
-		firstName, lastName, email, requestedTickets := getInput()
+		firstName, lastName, email, requestedTickets := helper.GetInput()
 		isValidEmail := strings.Contains(email, "@")
 
 		isValidNumber := requestedTickets > remainingTickets
@@ -31,7 +32,7 @@ func main() {
 
 			remainingTickets = remainingTickets - requestedTickets
 
-			fmt.Printf("Thank you %v %v for booking % v Tickets./n", firstName, lastName, remainingTickets)
+			fmt.Printf("Thank you %v %v for booking % v Tickets.\n", firstName, lastName, remainingTickets)
 			fmt.Printf("You will recevie a confirmation mail on %v \n", email)
 
 			var allTheAttendes []string
@@ -58,21 +59,4 @@ func getFirstName(allTheAttendes []string) []string {
 		firstNames = append(firstNames, name[0])
 	}
 	return firstNames
-}
-
-func getInput() (string, string, string, uint) {
-	var firstName string
-	var lastName string
-	var email string
-	var requestedTickets uint
-
-	fmt.Printf("Enter your First Name ")
-	fmt.Scan(&firstName)
-	fmt.Printf("Enter your Last Name ")
-	fmt.Scan(&lastName)
-	fmt.Printf("Enter your email ")
-	fmt.Scan(&email)
-	fmt.Printf("Enter how mant tickets your want ")
-	fmt.Scan(&requestedTickets)
-	return firstName, lastName, email, requestedTickets
 }
