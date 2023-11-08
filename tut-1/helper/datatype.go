@@ -1,8 +1,8 @@
 package helper
 
 type UserData struct {
-	firstName        string
-	lastName         string
-	email            string
-	requestedTickets uint
+	FirstName        string
+	LastName         string
+	Email            string
+	RequestedTickets uint
 }

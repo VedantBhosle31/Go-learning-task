@@ -10,15 +10,14 @@ import (
 
 func GetInput() UserData {
 	var user UserData
-
 	fmt.Printf("Enter your First Name ")
-	fmt.Scan(&user.firstName)
+	fmt.Scan(&user.FirstName)
 	fmt.Printf("Enter your Last Name ")
-	fmt.Scan(&user.lastName)
+	fmt.Scan(&user.LastName)
 	fmt.Printf("Enter your email ")
-	fmt.Scan(&user.email)
+	fmt.Scan(&user.Email)
 	fmt.Printf("Enter how mant tickets your want ")
-	fmt.Scan(&user.requestedTickets)
+	fmt.Scan(&user.RequestedTickets)
 	return user
 }
 

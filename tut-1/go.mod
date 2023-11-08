@@ -1,3 +1,3 @@
-module tut-1
+module ticket-booking
 
 go 1.21.4
